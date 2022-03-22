@@ -1,0 +1,9 @@
+
+# Database Details
+database:           # Database connection details
+    host: localhost
+    catalog: logs
+    username: devowner
+    password: devowner
+
+printfirstline: 1   # Set to 1 to print first line of log to console
