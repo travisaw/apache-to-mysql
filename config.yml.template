@@ -7,3 +7,5 @@ database:           # Database connection details
     password: devowner
 
 printfirstline: 1   # Set to 1 to print first line of log to console
+executeSql: 1       # Set to 1 to execute SQL against DB
+logFormat: "(Apache Log Format)"

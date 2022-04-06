@@ -32,12 +32,13 @@ cursor = conn.cursor()
 
 # Pattern below is from the LogFormat setting in apache2.conf/httpd.conf file
 # You will likely need to change this value to the pattern your system uses
-parser = apache_log_parser.make_parser("%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"")
+parser = apache_log_parser.make_parser(data['logFormat'])
 
 log_file = sys.argv[1]
 
 counter = 0
 printFirstLine = data['printfirstline']
+executeSql = data['executeSql']
 
 # now = datetime.now()
 print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " Starting")
@@ -118,7 +119,8 @@ with open(log_file) as f:
                                           %s, %s)
                         """
 
-        cursor.execute(sql, record)
+        if executeSql == 1:
+            cursor.execute(sql, record)
 
         if counter == 0 and printFirstLine == 1:
             for key in d:
